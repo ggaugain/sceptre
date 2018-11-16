@@ -1,0 +1,12 @@
+template_path: templates/iam.py
+
+sceptre_user_data:
+  AssumeRolePolicyDocument:
+    Statement:
+      - Effect: Allow
+        Action: sts:AssumeRole
+        Principal:
+          Service: lambda.amazonaws.com
+  ManagedPolicyArns:
+    - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+  RoleName: "Role-for-Lambda"

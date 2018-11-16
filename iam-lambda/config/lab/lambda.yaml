@@ -1,0 +1,8 @@
+template_path: templates/lambda.py
+
+sceptre_user_data:
+  Handler: "index.handler"
+  Code:
+    ZipFile: !file_contents functions/hello_world.py
+  Role: !stack_output iam::Arn
+  Runtime: "python2.7"
