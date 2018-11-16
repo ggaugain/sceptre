@@ -1,0 +1,13 @@
+template_path: templates/kinesis.py
+
+sceptre_user_data:
+  Name: LabKinesis01
+  RetentionPeriodHours: 24
+  ShardCount: 1
+  StreamEncryption:
+    EncryptionType: KMS
+    KeyId: myKey
+  Tags:
+    -
+      Key: "Environment"
+      Value: "Labo"
