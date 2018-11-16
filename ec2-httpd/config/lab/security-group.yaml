@@ -1,0 +1,4 @@
+template_path: templates/security-group.py
+
+sceptre_user_data:
+    VpcId: !stack_output vpc::VpcId

@@ -1,0 +1,9 @@
+template_path: templates/vpc.py
+
+sceptre_user_data:
+  CidrBlock: 10.0.0.0/16
+  InternetGateway: True
+  Tags:
+    -
+      Key: "Name"
+      Value: "vpc-lab1"

@@ -1,0 +1,11 @@
+template_path: templates/subnet-public.py
+
+sceptre_user_data:
+  VpcId: !stack_output vpc::VpcId
+  GatewayId: !stack_output vpc::IgwName
+  CidrBlock: 10.0.10.0/24
+  MapPublicIpOnLaunch: True
+  Tags:
+    -
+      Key: "Name"
+      Value: "public-subnet"
