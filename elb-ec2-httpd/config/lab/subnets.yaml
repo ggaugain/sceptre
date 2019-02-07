@@ -1,0 +1,11 @@
+template_path: templates/subnets.py
+
+parameters:
+  PublicSubnet: 10.0.1.0/24
+  PrivateSubnet: 10.0.10.0/24
+  AvailabilityZone: eu-west-1a
+sceptre_user_data:
+  VpcId: !stack_output vpc::VpcId
+  GatewayId: !stack_output vpc::IgwName
+  Environment: {{environment_path.0}}
+  Project: {{environment_config.project_code}}

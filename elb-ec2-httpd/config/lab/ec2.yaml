@@ -1,0 +1,21 @@
+template_path: templates/ec2.py
+
+sceptre_user_data:
+  ImageId: ami-0c21ae4a3bd190229
+  InstanceType: t2.micro
+  SubnetId: !stack_output subnets::PriSubnet
+  #SubnetId: !stack_output subnets::PubSubnet
+  SecurityGroupIds:
+    - !stack_output security-group-web::SecurityGroup
+  UserData:
+    Path: data/userdata.sh
+  Tags:
+    -
+      Key: "Name"
+      Value: "httpd"
+    -
+      Key: "Environment"
+      Value: {{environment_path.0}}
+    -
+      Key: "Project"
+      Value: {{environment_config.project_code}}

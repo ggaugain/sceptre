@@ -1,0 +1,22 @@
+template_path: templates/elb.py
+
+sceptre_user_data:
+  Subnets:
+    - !stack_output subnets::PubSubnet
+  Listeners:
+    -
+      InstancePort: "80"
+      LoadBalancerPort: "80"
+      Protocol: "HTTP"
+  LoadBalancerName: elb-{{environment_config.project_code}}-{{environment_path.0}}
+  SecurityGroups:
+    - !stack_output security-group-elb::SecurityGroup
+  Instances:
+    - !stack_output ec2::InstancesID
+  Tags:
+    -
+      Key: "Environment"
+      Value: {{environment_path.0}}
+    -
+      Key: "Project"
+      Value: {{environment_config.project_code}}
